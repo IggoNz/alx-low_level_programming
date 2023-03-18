@@ -1,7 +1,7 @@
 #include <stdio.h>
 /**
  * main -Entry point
- * Description: 'A program that prints all single digit numbers to base 10'
+ * Description: 'A program that prints all single digit numbers'
  * Return: 0 (Always)
  */
 int main(void)
@@ -10,8 +10,8 @@ int main(void)
 
 	for (n = 0; n <= 9; n++)
 	{
-		printf("%d", n);
+		putchar(n + 48);
 	}
-	printf("\n");
+	putchar('\n');
 	return (0);
 }
