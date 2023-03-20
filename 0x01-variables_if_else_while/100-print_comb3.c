@@ -6,25 +6,25 @@
  */
 int main(void)
 {
-	int n;
 	int m;
+	int n;
 
-	for (n = 0; n < 10; n++)
+	for (m = 0; m < 10; m++)
 	{
-		for (m = 1; m < 10; m++)
+		for (n = 1; n < 10; n++)
 		{
-			if (n < m && n != m)
+			if (m < n && m != n)
 			{
-				putchar(n + '0');
 				putchar(m + '0');
-				if (n + m != 17)
+				putchar(n + '0');
+				if (m + n != 17)
 				{
 					putchar(',');
 					putchar(' ');
 				}
 			}
 		}
+	}
 	putchar('\n');
 	return (0);
-	}
 }
