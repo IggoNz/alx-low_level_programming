@@ -17,13 +17,15 @@ int main(void)
 			for (m = 2; m < 10; m++)
 			{
 				if (k < l && l < m)
-				putchar(k + '0');
-				putchar(l + '0');
-				putchar(m + '0');
-				if (k + l + m != 24)
 				{
-					putchar(',');
-					putchar(' ');
+					putchar(k + '0');
+					putchar(l + '0');
+					putchar(m + '0');
+					if (k + l + m != 24)
+					{
+						putchar(',');
+						putchar(' ');
+					}
 				}
 			}
 		}
