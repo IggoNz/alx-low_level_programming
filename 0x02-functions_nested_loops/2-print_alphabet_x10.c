@@ -1,9 +1,8 @@
-#include "main.h"
-/**
- * print_alphabet_x10 - prints 10 times the alphabet in lowercase
- * Returns: 0 (Always)
- */
+#incude "main.h"
 
+/**
+ * print_alphabet_x10 - print the alphabet 10 times in lowercase
+ */
 void print_alphabet_x10(void)
 {
 	int count = 0;
