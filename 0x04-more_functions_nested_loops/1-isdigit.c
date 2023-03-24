@@ -2,18 +2,18 @@
 
 /**
  * _isdigit - a function that checks for a digit
- * @c:the digit being checked
+ * @j:the digit being checked
  * Return: 1 if c is a digit
  * otherwise returns 0
  */
-int _isdigit(int c)
+int _isdigit(int j)
 {
-	if (c >= 48 && c <= 57)
+	if (j >= 48 && j <= 57)
 	{
-		return (0);
+		return (1);
 	}
 	else
 	{
-		return (1);
+		return (0);
 	}
 }
