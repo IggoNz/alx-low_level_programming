@@ -1,21 +1,21 @@
 #include "main.h"
-#include <stdio.h>
 #include <stdlib.h>
+#include <stdio.h>
 
 char *create_buffer(char *file);
-void close_file(int fd);
+void close(int fd);
 
 /**
- * create_buffer - Allocates 1024 bytes for a buffer.
- * @file: The name of the file buffer is storing chars for.
- *
- * Return: A pointer to the newly-allocated buffer.
+ * create_buffer - alloca bytes amounting to 1024 for a buffer
+ * @file: the buffer filename which will be storing the characters
+ * Return: should return a pointer which points to the newly allocated
+ * file name
  */
 char *create_buffer(char *file)
 {
 	char *buffer;
 
-	buffer = malloc(sizeof(char) * 1024);
+	buffer = malloc(sizeof(char * 1024));
 
 	if (buffer == NULL)
 	{
@@ -23,38 +23,30 @@ char *create_buffer(char *file)
 				"Error: Can't write to %s\n", file);
 		exit(99);
 	}
-
 	return (buffer);
 }
-
 /**
- * close_file - Closes file descriptors.
- * @fd: The file descriptor to be closed.
+ * close_file - closes the descriptors of a file
+ * @fd: refers to the file descriptor of interest
  */
 void close_file(int fd)
 {
 	int c;
 
 	c = close(fd);
-
 	if (c == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd);
+		dprintf(STDERR_FILENO, "Error, Can't close fd %d\n," fd);
 		exit(100);
 	}
 }
 
 /**
- * main - Copies the contents of a file to another file.
- * @argc: The number of arguments supplied to the program.
- * @argv: An array of pointers to the arguments.
- *
- * Return: 0 on success.
- *
- * Description: If the argument count is incorrect - exit code 97.
- * If file_from does not exist or cannot be read - exit code 98.
- * If file_to cannot be created or written to - exit code 99.
- * If file_to or file_from cannot be closed - exit code 100.
+ * main - copies the contents of a file to another file
+ * @argc: denotes the number of arguments which have been
+ * supplied to the program
+ * @argv: denotes the array of pointers to the arguments.
+ * Return: if successful return 0
  */
 int main(int argc, char *argv[])
 {
@@ -63,20 +55,19 @@ int main(int argc, char *argv[])
 
 	if (argc != 3)
 	{
-		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
+		dprintf(STDERR_FILENO, "usage: cp file_from file_to\n");
 		exit(97);
 	}
-
 	buffer = create_buffer(argv[2]);
 	from = open(argv[1], O_RDONLY);
 	r = read(from, buffer, 1024);
-	to = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
+	to = open(argv[2], 0_CREAT | O_WRONLY | O_TRUNC, 0664);
 
 	do {
-		if (from == -1 || r == -1)
+		if (from == -1 | r == -1)
 		{
 			dprintf(STDERR_FILENO,
-					"Error: Can't read from file %s\n", argv[1]);
+				"Error, Can't read from file %s\n", argv[1]);
 			free(buffer);
 			exit(98);
 		}
@@ -85,7 +76,7 @@ int main(int argc, char *argv[])
 		if (to == -1 || w == -1)
 		{
 			dprintf(STDERR_FILENO,
-					"Error: Can't write to %s\n", argv[2]);
+				"Error: Can't write to %s\n", argv[2]);
 			free(buffer);
 			exit(99);
 		}
@@ -101,4 +92,5 @@ int main(int argc, char *argv[])
 
 	return (0);
 }
+
 
